@@ -20,13 +20,19 @@ Things you may want to cover:
 > locahost:3000/orders/new
 
 ### Input 1
-> - 2 book at 12.49 ,1 music CD at 14.99, 1 chocolate bar at 0.85
+> - 2 book at 12.49 
+> - 1 music CD at 14.99
+> - 1 chocolate bar at 0.85
 ![input1.png](docs%2Finput1.png)
 ![output1.png](docs%2Foutput1.png)
-> - 1 imported box of chocolates at 10.00, 1 imported bottle of perfume at 47.50
+> - 1 imported box of chocolates at 10.00
+> - 1 imported bottle of perfume at 47.50
 ![input2.png](docs%2Finput2.png)
 ![output2.png](docs%2Foutput2.png)
-> - 1 imported bottle of perfume at 27.99, 1 bottle of perfume at 18.99, 1 packet of headache pills at 9.75 ,3 imported boxes of chocolates at 11.25
+> - 1 imported bottle of perfume at 27.99
+> - 1 bottle of perfume at 18.99
+> - 1 packet of headache pills at 9.75
+> - 3 imported boxes of chocolates at 11.25
 ![input3.png](docs%2Finput3.png)
 ![output3.png](docs%2Foutput3.png)
 
