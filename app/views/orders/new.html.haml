@@ -1,0 +1,50 @@
+%h1 New Order
+
+= form_with model: @order, local: true do |f|
+  .field
+    = f.label :product_id, 'Select Product'
+    = f.collection_select :product_id, @products, :id, :name, prompt: 'Choose a product'
+  %br
+  .field
+    = f.label :quantity, 'Quantity'
+    = f.number_field :quantity, min: 1, value: 1, id: 'item-quantity'
+  %br
+  .actions
+    = button_tag(type: 'button', id: 'add-item-button') do
+      Add Item
+    = f.hidden_field :order_items_json, id: 'order-items-json'
+    = f.submit 'Submit Order'
+
+%h2 Order Items
+%ul#order-items-list
+
+:javascript
+    const addItemButton = document.getElementById('add-item-button');
+    const orderItemsList = document.getElementById('order-items-list');
+    const orderItemsJsonField = document.getElementById('order-items-json');
+    const products = #{ @products.to_json };
+    let orderItems = [];
+
+    addItemButton.addEventListener('click', function() {
+      const selectedProductId = document.querySelector('select[name="order[product_id]"]').value;
+      const selectedProduct = products.find(product => product.id == selectedProductId);
+      const quantity = document.getElementById('item-quantity').value;
+
+      if (selectedProductId && quantity > 0) {
+        // Add item to the visible list
+        const listItem = document.createElement('li');
+        listItem.textContent = `${quantity} x ${selectedProduct.name} at $${selectedProduct.price} each`;
+        orderItemsList.appendChild(listItem);
+
+        // Add item to the order items array
+        orderItems.push({ product_id: selectedProductId, quantity: quantity });
+
+        // Update the hidden field with the serialized order items array
+        orderItemsJsonField.value = JSON.stringify(orderItems);
+
+        // Clear the quantity field
+        document.getElementById('item-quantity').value = 1;
+      } else {
+        alert('Please select a product and enter a valid quantity.');
+      }
+    });

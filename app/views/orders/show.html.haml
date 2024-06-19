@@ -1,0 +1,14 @@
+%h1 Order Details
+
+%ul
+  - @order.order_items.each do |item|
+    %li
+      = "#{item.quantity} x #{item.product.name}: $#{'%.2f' % item.total}"
+
+%h2 Total
+%p
+  = "Sales Tax Total: $#{'%.2f' % @order.sale_taxes}"
+  %br
+  = "Total Price: $#{'%.2f' % @order.total}"
+
+= link_to 'Go Back', new_order_path, target: "_blank"
