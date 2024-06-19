@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Digital Store: Create an order of items then submit to get the invoice details
 
 Things you may want to cover:
 
-* Ruby version
+* 1- Build Image
+> docker compose build
 
-* System dependencies
+* 2- Run Image
+> docker compose run
 
-* Configuration
+* 3- Run Tests (opcional)
+> docker compose exec api bin/rails spec
 
-* Database creation
+* 4- Run Seeds (only in case they didnt run automatically)
+> docker compose exec api bin/rails db:seed
 
-* Database initialization
+* 5- Run the store in:
+> locahost:3000/orders/new
 
-* How to run the test suite
+### Input 1
+> - 2 book at 12.49 ,1 music CD at 14.99, 1 chocolate bar at 0.85
+![input1.png](docs%input1.png)
+![output1.png](docs%output1.png)
+> - 1 imported box of chocolates at 10.00, 1 imported bottle of perfume at 47.50
+![input2.png](docs%input2.png)
+![output2.png](docs%output2.png)
+> - 1 imported bottle of perfume at 27.99, 1 bottle of perfume at 18.99, 1 packet of headache pills at 9.75 ,3 imported boxes of chocolates at 11.25
+![input3.png](docs%input3.png)
+![output3.png](docs%output3.png)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Without Docker
+> - Nothing really different from running a regular rails app I used ruby version 3.2.4, rails version 7.1.3.4 & postgres version 14.12
+> - The usual bundle install, db:migrate and rails server (the db name I used can be found in DockerFile)
 
-* ...
+
+
+
+
+
